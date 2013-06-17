@@ -1,0 +1,8 @@
+This project contains a small demo of KijiSchema/KijiMR.
+In particular, this demonstrates the following:
+ - how to use KijiSchema to read/write cells,
+ - how to use KijiMR to write a bulk-importer/producer/gatherer/reducer.
+ - how to use the Kiji testing framework to unit-test all of these.
+
+To compile and run the tests:
+  mvn clean test

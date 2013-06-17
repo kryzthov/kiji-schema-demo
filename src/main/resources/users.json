@@ -1,0 +1,63 @@
+{
+  "name" : "users",
+  "description" : "A table for user names and email addresses",
+  "keys_format" : {
+    "org.kiji.schema.avro.RowKeyFormat2" : {
+      "encoding" : "FORMATTED",
+      "salt" : {
+        "hash_size" : 2
+      },
+      "components" : [ {
+        "name" : "login",
+        "type" : "STRING"
+      } ]
+    }
+  },
+  "locality_groups" : [ {
+    "name" : "default",
+    "description" : "main storage",
+    "in_memory" : false,
+    "max_versions" : 2147483647,
+    "ttl_seconds" : 2147483647,
+    "bloom_type" : "NONE",
+    "compression_type" : "SNAPPY",
+    "families" : [ {
+      "name" : "browsing_history",
+      "description" : "Browsing history of the user: qualifiers are URLs, values are HTML content.",
+      "map_schema" : {
+        "storage" : "UID",
+        "type" : "INLINE",
+        "value" : "\"string\""
+      }
+    }, {
+      "name" : "info",
+      "description" : "Basic information about users.",
+      "columns" : [ {
+        "name" : "full_name",
+        "description" : "Full name of the user.",
+        "column_schema" : {
+          "storage" : "UID",
+          "type" : "INLINE",
+          "value" : "\"string\""
+        }
+      }, {
+        "name" : "address",
+        "description" : "Address of the user.",
+        "column_schema" : {
+          "storage" : "UID",
+          "type" : "INLINE",
+          "value" : "\"string\""
+        }
+      }, {
+        "name" : "zip_code",
+        "description" : "Zip-code of the user.",
+        "column_schema" : {
+          "storage" : "UID",
+          "type" : "INLINE",
+          "value" : "\"int\""
+        }
+      } ]
+    } ]
+  } ],
+  "version" : "layout-1.2"
+}
